@@ -1,0 +1,27 @@
+<article class="card">
+  <div class="card__head">
+    <h3 class="card__title">
+      <a [routerLink]="['/projects', project().slug]">{{ project().title }}</a>
+    </h3>
+    <span class="card__year">{{ project().year }}</span>
+  </div>
+
+  <p class="card__summary">{{ project().summary }}</p>
+
+  <ul class="card__tags">
+    @for (tag of project().tags; track tag) {
+      <li class="tag">{{ tag }}</li>
+    }
+  </ul>
+
+  @if (project().links; as links) {
+    <div class="card__links">
+      @if (links.live) {
+        <a [href]="links.live" target="_blank" rel="noopener noreferrer">Live site ↗</a>
+      }
+      @if (links.repo) {
+        <a [href]="links.repo" target="_blank" rel="noopener noreferrer">Source ↗</a>
+      }
+    </div>
+  }
+</article>

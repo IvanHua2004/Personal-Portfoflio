@@ -1,0 +1,60 @@
+.contact__intro {
+  max-width: 60ch;
+  margin-bottom: var(--space-6);
+}
+
+.form {
+  max-width: 560px;
+}
+
+.field {
+  margin-bottom: var(--space-5);
+
+  label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    resize: vertical;
+    transition: border-color 180ms ease;
+
+    &:focus {
+      border-color: var(--color-accent);
+      outline: none;
+    }
+  }
+}
+
+.field__error {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-sm);
+  color: #ff8b8b;
+}
+
+.form__status {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+
+  &--ok { color: #6ee7a8; }
+  &--error { color: #ff8b8b; }
+}
+
+// Honeypot must be reachable by bots parsing the DOM but invisible to people.
+.field--honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

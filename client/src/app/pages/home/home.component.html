@@ -1,0 +1,55 @@
+<section class="hero">
+  <div class="container">
+    <p class="hero__eyebrow">{{ profile.role }} · {{ profile.location }}</p>
+    <h1 class="hero__title">
+      Hi, I'm {{ profile.name }}.<br />
+      <span class="hero__accent">{{ profile.tagline }}</span>
+    </h1>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" routerLink="/projects">View my work</a>
+      <a class="btn btn--ghost" routerLink="/contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Selected work</h2>
+
+    @if (loading()) {
+      <p>Loading projects…</p>
+    } @else if (featured().length) {
+      <div class="grid">
+        @for (project of featured(); track project.slug) {
+          <app-project-card [project]="project" />
+        }
+      </div>
+
+      <p class="home__more">
+        <a routerLink="/projects">See all projects →</a>
+      </p>
+    } @else {
+      <p>No featured projects yet.</p>
+    }
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">What I work with</h2>
+
+    <div class="grid">
+      @for (group of skills; track group.category) {
+        <div class="skills">
+          <h3 class="skills__title">{{ group.category }}</h3>
+          <ul class="skills__list">
+            @for (item of group.items; track item) {
+              <li class="tag">{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

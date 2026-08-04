@@ -1,0 +1,68 @@
+.about__bio {
+  max-width: 65ch;
+  font-size: var(--text-lg);
+}
+
+.about__heading {
+  margin-top: var(--space-8);
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--color-border);
+}
+
+.timeline__item {
+  position: relative;
+  padding: 0 0 var(--space-6) var(--space-5);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+}
+
+.timeline__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.timeline__role {
+  margin: 0;
+  font-size: var(--text-base);
+}
+
+.timeline__period {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.about__skills {
+  margin-bottom: var(--space-5);
+}
+
+.about__skills-title {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-3);
+}
+
+.about__skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

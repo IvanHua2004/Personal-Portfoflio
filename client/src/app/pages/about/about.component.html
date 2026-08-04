@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="container about">
+    <h1>About</h1>
+
+    @for (paragraph of profile.bio; track $index) {
+      <p class="about__bio">{{ paragraph }}</p>
+    }
+
+    <h2 class="section__title about__heading">Experience</h2>
+    <ol class="timeline">
+      @for (item of experience; track item.company) {
+        <li class="timeline__item">
+          <div class="timeline__head">
+            <h3 class="timeline__role">{{ item.role }} · {{ item.company }}</h3>
+            <span class="timeline__period">{{ item.period }}</span>
+          </div>
+          <p>{{ item.detail }}</p>
+        </li>
+      }
+    </ol>
+
+    <h2 class="section__title about__heading">Skills</h2>
+    @for (group of skills; track group.category) {
+      <div class="about__skills">
+        <h3 class="about__skills-title">{{ group.category }}</h3>
+        <ul class="about__skills-list">
+          @for (item of group.items; track item) {
+            <li class="tag">{{ item }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</section>

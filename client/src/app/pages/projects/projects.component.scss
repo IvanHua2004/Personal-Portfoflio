@@ -1,0 +1,40 @@
+.projects__intro {
+  max-width: 55ch;
+  margin-bottom: var(--space-6);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.filters__btn {
+  padding: var(--space-1) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+
+  &:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+  }
+
+  &.is-active {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}

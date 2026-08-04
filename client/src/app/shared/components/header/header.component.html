@@ -1,0 +1,37 @@
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" routerLink="/" (click)="closeMenu()">
+      {{ profile.name }}<span class="header__dot">.</span>
+    </a>
+
+    <button
+      type="button"
+      class="header__toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-nav"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      <span class="header__bar"></span>
+      <span class="header__bar"></span>
+      <span class="header__bar"></span>
+    </button>
+
+    <nav id="primary-nav" class="header__nav" [class.is-open]="menuOpen()">
+      <ul class="header__list">
+        @for (item of navItems; track item.path) {
+          <li>
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="is-active"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              (click)="closeMenu()"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

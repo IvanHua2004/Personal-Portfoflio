@@ -1,0 +1,15 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__copy">© {{ year }} {{ profile.name }}. Built with Angular.</p>
+
+    <ul class="footer__socials">
+      @for (social of profile.socials; track social.url) {
+        <li>
+          <a [href]="social.url" target="_blank" rel="noopener noreferrer">
+            {{ social.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</footer>

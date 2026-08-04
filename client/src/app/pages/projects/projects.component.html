@@ -1,0 +1,42 @@
+<section class="section">
+  <div class="container">
+    <h1>Projects</h1>
+    <p class="projects__intro">
+      Things I've built — click through for the write-up, or filter by stack.
+    </p>
+
+    <div class="filters" role="group" aria-label="Filter projects by tag">
+      <button
+        type="button"
+        class="filters__btn"
+        [class.is-active]="activeTag() === null"
+        (click)="selectTag(null)"
+      >
+        All
+      </button>
+
+      @for (tag of tags(); track tag) {
+        <button
+          type="button"
+          class="filters__btn"
+          [class.is-active]="activeTag() === tag"
+          (click)="selectTag(tag)"
+        >
+          {{ tag }}
+        </button>
+      }
+    </div>
+
+    @if (loading()) {
+      <p>Loading projects…</p>
+    } @else if (visibleProjects().length) {
+      <div class="grid">
+        @for (project of visibleProjects(); track project.slug) {
+          <app-project-card [project]="project" />
+        }
+      </div>
+    } @else {
+      <p>No projects match that filter.</p>
+    }
+  </div>
+</section>

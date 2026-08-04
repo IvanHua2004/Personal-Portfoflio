@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="container">
+    <p class="detail__back"><a routerLink="/projects">← All projects</a></p>
+
+    @if (project() === null) {
+      <p class="detail__loading">Loading project…</p>
+    } @else if (project(); as p) {
+      <h1>{{ p.title }}</h1>
+      <p class="detail__meta">{{ p.year }} · {{ p.summary }}</p>
+
+      <ul class="detail__tags">
+        @for (tag of p.tags; track tag) {
+          <li class="tag">{{ tag }}</li>
+        }
+      </ul>
+
+      <p class="detail__body">{{ p.description }}</p>
+
+      @if (p.links; as links) {
+        <div class="detail__actions">
+          @if (links.live) {
+            <a class="btn btn--primary" [href]="links.live" target="_blank" rel="noopener noreferrer">
+              Visit live site
+            </a>
+          }
+          @if (links.repo) {
+            <a class="btn btn--ghost" [href]="links.repo" target="_blank" rel="noopener noreferrer">
+              View source
+            </a>
+          }
+        </div>
+      }
+    } @else {
+      <h1>Project not found</h1>
+      <p>That project doesn't exist — it may have been renamed.</p>
+    }
+  </div>
+</section>

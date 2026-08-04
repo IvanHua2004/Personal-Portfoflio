@@ -1,0 +1,27 @@
+# Render Blueprint — create the service from this file with
+# "New +" → "Blueprint" and point it at this repo.
+services:
+  - type: web
+    name: portfolio-api
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: server
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Your GitHub Pages origin — no trailing slash, no path.
+      - key: CORS_ORIGINS
+        value: https://your-username.github.io
+      # Set these in the Render dashboard (marked sync:false so they are
+      # never committed to the repo).
+      - key: RESEND_API_KEY
+        sync: false
+      - key: CONTACT_FROM
+        sync: false
+      - key: CONTACT_TO
+        sync: false
