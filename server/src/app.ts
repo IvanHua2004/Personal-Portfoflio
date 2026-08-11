@@ -4,7 +4,6 @@ import express from 'express';
 import { config, emailEnabled } from './config.js';
 import { errorHandler, notFound } from './middleware/error-handler.js';
 import { contactRouter } from './routes/contact.route.js';
-import { projectsRouter } from './routes/projects.route.js';
 
 export function createApp() {
   const app = express();
@@ -42,7 +41,6 @@ export function createApp() {
     });
   });
 
-  app.use('/api/projects', projectsRouter);
   app.use('/api/contact', contactRouter);
 
   app.use(notFound);

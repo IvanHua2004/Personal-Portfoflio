@@ -2,9 +2,10 @@ import { SkillGroup } from '../core/models/skill.model';
 
 export const PROFILE = {
   name: 'Ivan Hua',
-  role: 'Front-end Developer',
-  tagline: 'I build fast, accessible web applications with Angular and TypeScript.',
-  location: 'Your City, Country',
+  role: 'Computer engineering student',
+  tagline:
+    'Mathematics is what pulled me into engineering. AI is where I want to go deeper.',
+  location: 'Polytechnique Montréal',
   email: 'ivanhua631@gmail.com',
   bio: [
     'I am a front-end developer who enjoys the part of the job where a rough idea ' +
@@ -14,30 +15,59 @@ export const PROFILE = {
       'write occasionally about front-end architecture.',
   ],
   socials: [
-    { label: 'GitHub', url: 'https://github.com/your-username' },
+    { label: 'GitHub', url: 'https://github.com/IvanHua2004' },
+    // TODO(ivan): your real LinkedIn, or delete this entry — a dead link is
+    // worse than a missing one.
     { label: 'LinkedIn', url: 'https://linkedin.com/in/your-username' },
     { label: 'Email', url: 'mailto:ivanhua631@gmail.com' },
   ],
 } as const;
 
+/**
+ * Grouped by what it's for rather than by language, so the robotics work and
+ * the web work each read as a coherent set instead of one long alphabetised
+ * list of nouns.
+ *
+ * TODO(ivan): add or cut to match what you'd actually be happy to be asked
+ * about in an interview. Listing a tool you've touched once costs more than
+ * leaving it off.
+ */
 export const SKILLS: SkillGroup[] = [
-  { category: 'Languages', items: ['TypeScript', 'JavaScript', 'HTML', 'SCSS', 'SQL'] },
-  { category: 'Frameworks', items: ['Angular', 'RxJS', 'Node.js', 'Express'] },
-  { category: 'Tooling', items: ['Git', 'Vite', 'Jest / Jasmine', 'Docker', 'GitHub Actions'] },
+  { category: 'Robotics', items: ['ROS 2', 'RViz', 'URDF', 'Inverse kinematics', 'Eigen'] },
+  { category: 'Languages', items: ['C++', 'TypeScript', 'JavaScript', 'HTML', 'SCSS'] },
+  { category: 'Web', items: ['Angular', 'RxJS', 'Node.js', 'Express', 'Canvas'] },
+  { category: 'Tooling', items: ['Git', 'CMake', 'colcon', 'GitHub Actions'] },
 ];
 
-export const EXPERIENCE = [
-  {
-    role: 'Front-end Developer',
-    company: 'Company Name',
-    period: '2024 — Present',
-    detail:
-      'Building and maintaining customer-facing Angular applications; led the migration to standalone components.',
-  },
-  {
-    role: 'Junior Developer',
-    company: 'Earlier Company',
-    period: '2022 — 2024',
-    detail: 'Shipped features across the stack and owned the design-system component library.',
-  },
-];
+/**
+ * What you're actually up to right now.
+ *
+ * This replaces the usual work-history timeline. A student two years in doesn't
+ * have one worth printing, and an empty or padded timeline reads worse than no
+ * timeline at all — whereas what someone is studying, building and reading this
+ * term is genuinely the most interesting thing about them.
+ *
+ * Keep `updated` honest. A stale "currently" is worse than none, and the date
+ * is what tells a reader the site is maintained rather than abandoned.
+ */
+export const CURRENT = {
+  updated: 'August 2026',
+  items: [
+    {
+      label: 'Studying',
+      text:
+        'Linear algebra and probability at Polytechnique — the parts that keep ' +
+        'turning up underneath machine learning.',
+    },
+    {
+      label: 'Building',
+      text:
+        'This site, including a hero that measures its own text out of the DOM ' +
+        'and rebuilds it from a few thousand particles.',
+    },
+    {
+      label: 'Reading',
+      text: 'Working through the maths behind neural networks, one chapter at a time.',
+    },
+  ],
+};

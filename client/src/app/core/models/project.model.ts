@@ -1,19 +1,36 @@
+/**
+ * A still or a short loop shown beside a project.
+ *
+ * Video is a first-class option rather than an afterthought: a screenshot of an
+ * RViz scene is a grey robot on a grid, and can't show that the claw actually
+ * tracks anything. A few seconds of silent loop says what the description says.
+ */
+export interface ProjectMedia {
+  /** Path relative to /public, e.g. 'projects/six-axis.webp'. */
+  src: string;
+  /** 'video' renders a muted, looping, inline clip. Defaults to 'image'. */
+  type?: 'image' | 'video';
+  /** Still shown before a video loads, and instead of it on reduced motion. */
+  poster?: string;
+  /** Describe what's happening, not that it's a screenshot. */
+  alt: string;
+}
+
 export interface Project {
   /** URL-friendly identifier used in /projects/:slug */
   slug: string;
   title: string;
-  /** One-line pitch shown on cards */
+  /** One-line pitch shown in the list */
   summary: string;
   /** Longer write-up shown on the detail page */
   description: string;
   tags: string[];
   year: number;
-  /** Marks the project for the "Selected work" list on the home page */
   featured: boolean;
   links?: {
     live?: string;
     repo?: string;
   };
-  /** Path relative to /public, e.g. 'images/project-a.png' */
-  image?: string;
+  /** Optional. Without it the row falls back to a plain panel. */
+  media?: ProjectMedia;
 }

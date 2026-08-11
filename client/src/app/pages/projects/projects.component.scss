@@ -1,40 +1,16 @@
 .projects__intro {
   max-width: 55ch;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-7);
 }
 
-.filters {
+// A numbered list rather than a card grid. Three narrow columns forced the
+// summaries into four cramped lines and left a field of dead space underneath;
+// full-width rows give each project room for a real sentence and let the eye
+// run straight down the list.
+.projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
-}
-
-.filters__btn {
-  padding: var(--space-1) var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--color-text-muted);
-  font: inherit;
-  font-size: var(--text-sm);
-  cursor: pointer;
-  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
-
-  &:hover {
-    color: var(--color-text);
-    border-color: var(--color-accent);
-  }
-
-  &.is-active {
-    background: var(--color-accent-soft);
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-4);
+  flex-direction: column;
 }

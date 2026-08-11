@@ -19,12 +19,13 @@
 
     <nav id="primary-nav" class="header__nav" [class.is-open]="menuOpen()">
       <ul class="header__list">
-        @for (item of navItems; track item.path) {
+        @for (item of navItems; track item.fragment) {
           <li>
             <a
-              [routerLink]="item.path"
-              routerLinkActive="is-active"
-              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              routerLink="/"
+              [fragment]="item.fragment"
+              [class.is-active]="activeSection() === item.fragment"
+              [attr.aria-current]="activeSection() === item.fragment ? 'true' : null"
               (click)="closeMenu()"
             >
               {{ item.label }}

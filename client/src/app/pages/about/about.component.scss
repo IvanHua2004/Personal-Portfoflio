@@ -7,46 +7,66 @@
   margin-top: var(--space-8);
 }
 
-.timeline {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-left: 1px solid var(--color-border);
-}
-
-.timeline__item {
-  position: relative;
-  padding: 0 0 var(--space-6) var(--space-5);
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: -5px;
-    top: 8px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--color-accent);
-  }
-}
-
-.timeline__head {
+// The date sits on the same baseline as the heading, so the section states
+// plainly how fresh it is. A "currently" with no date is a claim you can't
+// check; with one, it either reassures the reader or tells you to update it.
+.current__heading {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-between;
   gap: var(--space-3);
+
+  .section__title {
+    margin-bottom: 0;
+    flex: 1;
+  }
 }
 
-.timeline__role {
-  margin: 0;
-  font-size: var(--text-base);
-}
-
-.timeline__period {
+.current__updated {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.current {
+  margin: var(--space-5) 0 0;
+}
+
+// Label in a fixed column beside the text on wide screens, stacked underneath
+// on narrow ones. Rows are separated by a hairline rather than boxed in cards —
+// three cards for three sentences is more furniture than the content needs.
+.current__row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
+
+.current__label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  // Nudged down so it optically aligns with the first line of body text.
+  padding-top: 0.15em;
+}
+
+.current__text {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
 .about__skills {

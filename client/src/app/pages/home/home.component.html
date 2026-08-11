@@ -1,55 +1,25 @@
-<section class="hero">
-  <div class="container">
-    <p class="hero__eyebrow">{{ profile.role }} · {{ profile.location }}</p>
-    <h1 class="hero__title">
-      Hi, I'm {{ profile.name }}.<br />
-      <span class="hero__accent">{{ profile.tagline }}</span>
-    </h1>
+<section class="hero" id="top">
+  <app-flow-field [sources]="heroSources()" (ready)="onFieldReady()" />
+
+  <div class="container hero__content">
+    <div class="hero__text" [class.is-ghosted]="fieldReady()">
+      <p class="hero__eyebrow" #heroLine>{{ profile.role }} at {{ profile.location }}</p>
+      <h1 class="hero__title" #heroLine>Hi, I'm {{ profile.name }}.</h1>
+      <p class="hero__tagline" #heroLine>{{ profile.tagline }}</p>
+    </div>
 
     <div class="hero__actions">
-      <a class="btn btn--primary" routerLink="/projects">View my work</a>
-      <a class="btn btn--ghost" routerLink="/contact">Get in touch</a>
+      <a class="btn btn--primary" routerLink="/" fragment="projects">View my work</a>
+      <a class="btn btn--ghost" routerLink="/" fragment="contact">Get in touch</a>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h2 class="section__title">Selected work</h2>
-
-    @if (loading()) {
-      <p>Loading projects…</p>
-    } @else if (featured().length) {
-      <div class="grid">
-        @for (project of featured(); track project.slug) {
-          <app-project-card [project]="project" />
-        }
-      </div>
-
-      <p class="home__more">
-        <a routerLink="/projects">See all projects →</a>
-      </p>
-    } @else {
-      <p>No featured projects yet.</p>
-    }
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="section__title">What I work with</h2>
-
-    <div class="grid">
-      @for (group of skills; track group.category) {
-        <div class="skills">
-          <h3 class="skills__title">{{ group.category }}</h3>
-          <ul class="skills__list">
-            @for (item of group.items; track item) {
-              <li class="tag">{{ item }}</li>
-            }
-          </ul>
-        </div>
-      }
-    </div>
-  </div>
-</section>
+<!--
+  One page, three sections. Each is the same component the site already had —
+  embedded rather than duplicated, so there's still exactly one source of truth
+  for the project list, the bio and the contact form.
+-->
+<app-projects id="projects" />
+<app-about id="about" />
+<app-contact id="contact" />

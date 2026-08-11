@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { EXPERIENCE, PROFILE, SKILLS } from '../../data/profile.data';
+import { CURRENT, PROFILE, SKILLS } from '../../data/profile.data';
 
 @Component({
   selector: 'app-about',
@@ -11,5 +11,5 @@ import { EXPERIENCE, PROFILE, SKILLS } from '../../data/profile.data';
 export class AboutComponent {
   protected readonly profile = PROFILE;
   protected readonly skills = SKILLS;
-  protected readonly experience = EXPERIENCE;
+  protected readonly current = CURRENT;
 }

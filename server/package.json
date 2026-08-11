@@ -8,8 +8,7 @@
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc -p tsconfig.json && npm run copy:data",
-    "copy:data": "node -e \"require('node:fs').cpSync('src/data','dist/data',{recursive:true})\"",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit"
   },

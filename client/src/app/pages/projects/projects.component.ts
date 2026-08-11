@@ -1,8 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { ProjectCardComponent } from '../../shared/components/project-card/project-card.component';
 import { ProjectService } from '../../core/services/project.service';
 
+/**
+ * The tag filter is gone. Four projects produced ten filter pills — more
+ * controls than content, and a filter that can only ever narrow a list you can
+ * already see in full is decoration. It's worth bringing back at ~12 projects.
+ */
 @Component({
   selector: 'app-projects',
   imports: [ProjectCardComponent],
@@ -13,17 +18,5 @@ import { ProjectService } from '../../core/services/project.service';
 export class ProjectsComponent {
   private readonly projectService = inject(ProjectService);
 
-  protected readonly tags = this.projectService.tags;
-  protected readonly loading = this.projectService.loading;
-  protected readonly activeTag = signal<string | null>(null);
-
-  protected readonly visibleProjects = computed(() => {
-    const tag = this.activeTag();
-    const projects = this.projectService.all();
-    return tag ? projects.filter((p) => p.tags.includes(tag)) : projects;
-  });
-
-  protected selectTag(tag: string | null): void {
-    this.activeTag.set(tag);
-  }
+  protected readonly projects = this.projectService.all;
 }

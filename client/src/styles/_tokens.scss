@@ -2,6 +2,8 @@
 :root {
   // Colour
   --color-bg: #0d1117;
+  // Same value as --color-bg, as channels, so it can be used with rgba().
+  --color-bg-rgb: 13, 17, 23;
   --color-surface: #161b22;
   --color-surface-alt: #1c2430;
   --color-border: #2a3441;
@@ -10,6 +12,9 @@
   --color-accent: #4f9cf9;
   --color-accent-hover: #7db4fb;
   --color-accent-soft: rgba(79, 156, 249, 0.12);
+  // Warm counterpart to the accent blue — roughly its complement, so the cat
+  // reads as a separate creature rather than a piece of the text.
+  --color-cat: #f2a15c;
 
   // Spacing scale
   --space-1: 0.25rem;

@@ -54,6 +54,17 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-sm);
 }
 
+// Section components embedded on the one-page layout. Custom elements are
+// inline by default, which breaks both their box and scroll-margin.
+app-projects,
+app-about,
+app-contact {
+  display: block;
+  // The header is sticky and 64px tall, so an anchored section has to start
+  // below it — otherwise every jump buries the heading under the nav.
+  scroll-margin-top: 80px;
+}
+
 // Shared utility classes
 .container { @include container; }
 
