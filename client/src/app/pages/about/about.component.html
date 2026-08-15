@@ -6,10 +6,10 @@
       <p class="about__bio">{{ paragraph }}</p>
     }
 
-    <div class="about__heading current__heading">
-      <h2 class="section__title">Currently</h2>
-      <span class="current__updated">as of {{ current.updated }}</span>
-    </div>
+    <h2 class="section__title about__heading">
+      Currently
+      <span class="current__updated">{{ current.updated }}</span>
+    </h2>
 
     <dl class="current">
       @for (item of current.items; track item.label) {
@@ -21,15 +21,19 @@
     </dl>
 
     <h2 class="section__title about__heading">Skills</h2>
-    @for (group of skills; track group.category) {
-      <div class="about__skills">
-        <h3 class="about__skills-title">{{ group.category }}</h3>
-        <ul class="about__skills-list">
-          @for (item of group.items; track item) {
-            <li class="tag">{{ item }}</li>
-          }
-        </ul>
-      </div>
-    }
+    <dl class="skills">
+      @for (group of skills; track group.category) {
+        <div class="current__row">
+          <dt class="current__label">{{ group.category }}</dt>
+          <dd class="skills__items">
+            <ul class="about__skills-list">
+              @for (item of group.items; track item) {
+                <li class="tag">{{ item }}</li>
+              }
+            </ul>
+          </dd>
+        </div>
+      }
+    </dl>
   </div>
 </section>

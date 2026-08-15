@@ -1,60 +1,78 @@
+// Two columns: the invitation on the left, the links themselves on the right.
+// Rows rather than buttons, because the handles are the content here and a row
+// gives them room to be read.
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
 .contact__intro {
-  max-width: 60ch;
-  margin-bottom: var(--space-6);
+  max-width: 40ch;
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
-.form {
-  max-width: 560px;
+.socials {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.field {
-  margin-bottom: var(--space-5);
+.socials__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
 
-  label {
-    display: block;
-    margin-bottom: var(--space-2);
-    font-size: var(--text-sm);
-    font-weight: 500;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    color: var(--color-text);
-    font: inherit;
-    resize: vertical;
-    transition: border-color 180ms ease;
-
-    &:focus {
-      border-color: var(--color-accent);
-      outline: none;
-    }
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
   }
 }
 
-.field__error {
-  margin: var(--space-2) 0 0;
-  font-size: var(--text-sm);
-  color: #ff8b8b;
+// Last row has no divider under it, so the list ends rather than looking cut off.
+.socials li:last-child .socials__link {
+  border-bottom: 0;
 }
 
-.form__status {
-  margin-top: var(--space-4);
-  font-size: var(--text-sm);
-
-  &--ok { color: #6ee7a8; }
-  &--error { color: #ff8b8b; }
+// currentColor lets the logo follow the row into its hover colour instead of
+// staying a stranded grey beside it.
+.socials__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
-// Honeypot must be reachable by bots parsing the DOM but invisible to people.
-.field--honeypot {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+.socials__handle {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.socials__arrow {
+  margin-left: auto;
+  padding-left: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.socials__link:hover .socials__arrow {
+  color: inherit;
+}
+
+// One column below this: side by side, the intro wraps every few words and the
+// email address starts breaking mid-domain.
+@media (max-width: 800px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
 }

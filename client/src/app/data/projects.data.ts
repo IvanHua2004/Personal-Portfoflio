@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
       'controls in the XY, ZX and YZ planes so it can be moved anywhere in the ' +
       'workspace. The solver is a Jacobian with damped least squares, which stays ' +
       'stable near singularities where a plain inverse blows up.',
-    tags: ['ROS 2', 'C++', 'RViz', 'Inverse kinematics', 'Quaternions', 'URDF'],
+    tags: ['ROS 2', 'C++', 'RViz', 'Inverse kinematics', 'Quaternions', 'URDF', 'Eigen'],
     year: 2026,
     featured: true,
     links: {

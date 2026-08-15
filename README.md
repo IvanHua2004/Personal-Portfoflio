@@ -18,15 +18,12 @@ npm install
 npm start
 ```
 
-Then open http://localhost:4200.
-
-The contact form needs the API. It lives in `server/`, runs with `npm install && npm run dev`, and reads its config from a `.env` file (see `.env.example`).
+Then open http://localhost:4200. That's the whole site — it's static, with no backend to run.
 
 ## Layout
 
 ```
 client/    Angular app, deployed to GitHub Pages
-server/    Express API for the contact form, deployed to Render
 ```
 
 Content lives in `client/src/app/data/` — `projects.data.ts` for the project list, `profile.data.ts` for everything about me. Colours, spacing and type are in `client/src/styles/_tokens.scss`.
