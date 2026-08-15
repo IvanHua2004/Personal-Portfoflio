@@ -22,6 +22,7 @@
 // single thing that makes a projects section look thrown together, and you
 // don't notice until they're stacked.
 .card__media {
+  position: relative;
   margin: 0;
   aspect-ratio: 16 / 10;
   border: 1px solid var(--color-border);
@@ -37,21 +38,16 @@
   display: block;
 }
 
-// Placeholder plate: a dot grid echoing the hero's particles, so an absent
-// screenshot still looks like part of the design.
-.card__plate {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
-  background-size: 14px 14px;
+// A row with no media gives its text the full width rather than sitting beside
+// an empty frame. Some projects don't have anything worth showing, and half a
+// row of blank panel says less than nothing.
+:host(.is-text-only) .card {
+  grid-template-columns: 1fr;
 }
 
-.card__plate-index {
-  font-family: var(--font-mono);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  color: var(--color-border);
+:host(.is-text-only) .card__summary,
+:host(.is-text-only) .card__description {
+  max-width: 74ch;
 }
 
 .card__meta {

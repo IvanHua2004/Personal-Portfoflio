@@ -1,22 +1,17 @@
 <article class="card">
-  <figure class="card__media">
-    @if (project().media; as media) {
+  @if (project().media; as media) {
+    <figure class="card__media">
       @if (media.type === 'video') {
-        <!--
-          Muted, inline and looping so it plays on mobile without asking, and
-          not autoplayed for anyone who prefers reduced motion — they get the
-          poster frame instead, which is why setting one is worth it.
-        -->
         <video
+          #clip
           class="card__asset"
           [src]="media.src"
           [poster]="media.poster ?? ''"
-          [autoplay]="!reducedMotion()"
           [attr.aria-label]="media.alt"
-          muted
-          loop
+          [muted]="true"
+          [loop]="true"
           playsinline
-          preload="metadata"
+          preload="auto"
         ></video>
       } @else {
         <img
@@ -27,14 +22,8 @@
           decoding="async"
         />
       }
-    } @else {
-      <!-- No media yet: a dotted plate, so the row reads as designed rather
-           than broken while you're still capturing screenshots. -->
-      <div class="card__plate" aria-hidden="true">
-        <span class="card__plate-index">{{ padded() }}</span>
-      </div>
-    }
-  </figure>
+    </figure>
+  }
 
   <div class="card__body">
     <div class="card__meta">

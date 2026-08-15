@@ -1,16 +1,5 @@
 import { Project } from '../core/models/project.model';
 
-/**
- * Every project on the site. This is the only copy — the API that used to serve
- * them is gone, along with the three places a stale list could hide.
- *
- * Each entry renders as a full-width row with its media on alternating sides
- * and the whole write-up beside it. Add `media` to give a row a screenshot or
- * a clip; without one it falls back to a dotted plate.
- *
- * TODO(ivan): the `year` on each entry is a placeholder. Set the year you
- * actually built each one; a wrong date is the kind of detail people notice.
- */
 export const PROJECTS: Project[] = [
   {
     slug: 'six-axis-arm',
@@ -29,15 +18,12 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/IvanHua2004/six-axis-robotic-arm-simulation',
     },
-    // A clip beats a still here — a screenshot can't show that the claw
-    // actually follows the target. Drop the file in public/projects/ and
-    // uncomment:
-    // media: {
-    //   src: 'projects/six-axis.mp4',
-    //   type: 'video',
-    //   poster: 'projects/six-axis.webp',
-    //   alt: 'The claw following a sphere dragged through the RViz scene',
-    // },
+    media: {
+      src: 'projects/six-axis.mp4',
+      type: 'video',
+      poster: 'projects/six-axis.jpg',
+      alt: 'The claw following a sphere dragged through the RViz scene',
+    },
   },
   {
     slug: 'ik-claw-3dof',
@@ -56,12 +42,12 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/IvanHua2004/Inverse_kinematic_ROS2_simulation',
     },
-    // media: {
-    //   src: 'projects/ik-3dof.mp4',
-    //   type: 'video',
-    //   poster: 'projects/ik-3dof.webp',
-    //   alt: 'The turtle claw reaching a target turtle that has just spawned',
-    // },
+    media: {
+      src: 'projects/ik-3dof.mp4',
+      type: 'video',
+      poster: 'projects/ik-3dof.jpg',
+      alt: 'The turtle claw reaching a target turtle that has just spawned',
+    },
   },
   {
     slug: 'graph-search-visualiser',
@@ -77,12 +63,12 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/IvanHua2004/GraphSearchVisualiser',
     },
-    // Capture this one mid-search, with the frontier visible and the path
-    // found — the finished state says much less than the search does.
-    // media: {
-    //   src: 'projects/graph-search.webp',
-    //   alt: 'A* part-way through a grid, frontier expanding toward the goal',
-    // },
+    media: {
+      src: 'projects/graph-search.mp4',
+      type: 'video',
+      poster: 'projects/graph-search.jpg',
+      alt: 'A search expanding across the grid, frontier spreading toward the goal',
+    },
   },
   {
     slug: 'personal-portfolio',
@@ -98,9 +84,11 @@ export const PROJECTS: Project[] = [
     links: {
       repo: 'https://github.com/IvanHua2004/Personal-Portfoflio',
     },
-    // media: {
-    //   src: 'projects/portfolio.webp',
-    //   alt: 'The hero mid-assembly, particles forming the headline',
-    // },
+    media: {
+      src: 'projects/portfolio.mp4',
+      type: 'video',
+      poster: 'projects/portfolio.jpg',
+      alt: 'The hero assembling its headings out of particles',
+    },
   },
 ];
