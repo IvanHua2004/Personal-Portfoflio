@@ -25,6 +25,12 @@ export interface Project {
   /** Longer write-up shown on the detail page */
   description: string;
   tags: string[];
+  /**
+   * The one tag that names what the project is really about, highlighted in the
+   * accent colour so a reader skimming the list picks up the idea rather than
+   * the toolchain. Must match an entry in `tags` to have any effect.
+   */
+  keyTag?: string;
   year: number;
   featured: boolean;
   links?: {

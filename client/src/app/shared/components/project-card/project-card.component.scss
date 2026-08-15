@@ -6,41 +6,36 @@
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: var(--space-7);
-  align-items: center;
-  padding: var(--space-8) 0;
+  align-items: stretch;
+  padding: var(--space-8) 0 0;
   border-top: 1px solid var(--color-border);
 }
 
-// Every other row swaps sides. Ordering the columns rather than reversing the
-// grid keeps the DOM in reading order, so the text still follows the image for
-// a screen reader and the tab order doesn't zig-zag.
 :host(.is-flipped) .card__media {
   order: 2;
 }
 
-// Media keeps one aspect ratio across every project. Mismatched ratios are the
-// single thing that makes a projects section look thrown together, and you
-// don't notice until they're stacked.
 .card__media {
   position: relative;
+  display: flex;
   margin: 0;
-  aspect-ratio: 16 / 10;
+  padding: var(--space-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
   background: var(--color-surface);
+  min-height: 15rem;
 }
 
 .card__asset {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
 }
 
-// A row with no media gives its text the full width rather than sitting beside
-// an empty frame. Some projects don't have anything worth showing, and half a
-// row of blank panel says less than nothing.
 :host(.is-text-only) .card {
   grid-template-columns: 1fr;
 }
@@ -56,10 +51,6 @@
   gap: var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-.card__index {
   color: var(--color-accent);
 }
 
@@ -85,8 +76,6 @@
   line-height: 1.5;
 }
 
-// The full write-up lives here rather than behind a click. Slightly smaller and
-// muted so it reads as the detail beneath the summary, not a second headline.
 .card__description {
   margin: var(--space-4) 0 0;
   max-width: 58ch;
@@ -97,35 +86,76 @@
 .card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1) var(--space-3);
+  gap: var(--space-2);
   margin: var(--space-5) 0 0;
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-.card__tag + .card__tag::before {
-  content: '·';
-  margin-right: var(--space-3);
-  color: var(--color-border);
+  padding: 0;
+  list-style: none;
 }
 
 .card__links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5);
-  margin-top: var(--space-4);
-  font-size: var(--text-sm);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
 }
 
-// Below this the two columns are too narrow for either to work: the image gets
-// postcard-sized and the text wraps every four words. Stack instead, and drop
-// the alternation — it only means anything when there are two columns.
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #08203c;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+
+  &:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+}
+
+.card__link + .card__link {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 400;
+
+  &:hover {
+    background: var(--color-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+.card__link-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.card__link-arrow {
+  opacity: 0.7;
+}
 @media (max-width: 900px) {
   .card {
     grid-template-columns: 1fr;
     gap: var(--space-5);
-    padding: var(--space-6) 0;
+    padding: var(--space-6) 0 0;
+  }
+
+  .card__media {
+    min-height: 0;
+  }
+
+  .card__asset {
+    aspect-ratio: 16 / 10;
   }
 
   :host(.is-flipped) .card__media {

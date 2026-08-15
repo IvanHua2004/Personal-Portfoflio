@@ -3,14 +3,15 @@
   margin-bottom: var(--space-7);
 }
 
-// A numbered list rather than a card grid. Three narrow columns forced the
-// summaries into four cramped lines and left a field of dead space underneath;
-// full-width rows give each project room for a real sentence and let the eye
-// run straight down the list.
 .projects {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
+  gap: var(--space-8);
+
+  @media (max-width: 900px) {
+    gap: var(--space-6);
+  }
 }

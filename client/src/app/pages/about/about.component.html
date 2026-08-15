@@ -1,13 +1,13 @@
 <section class="section">
   <div class="container about">
-    <h2 class="section__title">About</h2>
+    <h2 class="section__title"><span class="section__index">02</span> About</h2>
 
     @for (paragraph of profile.bio; track $index) {
       <p class="about__bio">{{ paragraph }}</p>
     }
 
     <h2 class="section__title about__heading">
-      Currently
+      <span class="section__index">03</span> Currently
       <span class="current__updated">{{ current.updated }}</span>
     </h2>
 
@@ -20,7 +20,7 @@
       }
     </dl>
 
-    <h2 class="section__title about__heading">Skills</h2>
+    <h2 class="section__title about__heading"><span class="section__index">04</span> Skills</h2>
     <dl class="skills">
       @for (group of skills; track group.category) {
         <div class="current__row">

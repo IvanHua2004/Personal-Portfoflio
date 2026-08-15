@@ -2,23 +2,19 @@
   position: relative;
   isolation: isolate;
   padding-block: var(--space-9) var(--space-7);
+
   min-height: min(88vh, 720px);
   display: flex;
   align-items: center;
   overflow: hidden;
 }
 
-// Content sits above the canvas; the canvas itself is pointer-events: none,
-// so links and text selection behave normally.
 .hero__content {
   position: relative;
   z-index: 1;
   width: 100%;
 }
 
-// Bottom fade only, so the field doesn't run into the next section. The old
-// radial scrim is gone: it existed to protect text contrast, but the text is
-// now drawn from the particles themselves and the scrim washed it out.
 .hero::after {
   content: '';
   position: absolute;
@@ -28,20 +24,11 @@
   background: linear-gradient(to bottom, transparent 65%, var(--color-bg) 100%);
 }
 
-// Once the canvas confirms it's running, the real text turns transparent and
-// the particles take over. It stays in the DOM: still read by screen readers,
-// still indexed, still selectable. No canvas, no JS, or reduced motion — and
-// this class never lands, so the text just renders normally.
 .hero__text.is-ghosted,
 .hero__text.is-ghosted * {
   color: transparent;
 }
 
-// Hero type runs larger than the rest of the site. Particle text needs roughly
-// a 5x7 sample grid per character before it reads, so every extra point of
-// font size buys legibility that no amount of tuning can.
-// Monospace at regular weight has stems too thin to survive particle sampling —
-// letters break up. Bold thickens them enough to read cleanly at this size.
 .hero__eyebrow {
   margin-bottom: var(--space-4);
   font-family: var(--font-mono);

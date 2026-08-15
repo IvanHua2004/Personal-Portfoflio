@@ -27,7 +27,6 @@
 
   <div class="card__body">
     <div class="card__meta">
-      <span class="card__index">{{ padded() }}</span>
       <span class="card__year">{{ project().year }}</span>
     </div>
 
@@ -42,19 +41,30 @@
     <p class="card__summary">{{ project().summary }}</p>
     <p class="card__description">{{ project().description }}</p>
 
-    <p class="card__tags">
-      @for (tag of project().tags; track tag) {
-        <span class="card__tag">{{ tag }}</span>
+    <ul class="card__tags">
+      @for (tag of orderedTags(); track tag) {
+        <li class="tag" [class.tag--key]="tag === project().keyTag">{{ tag }}</li>
       }
-    </p>
+    </ul>
 
     @if (project().links; as links) {
       <div class="card__links">
         @if (links.live) {
-          <a [href]="links.live" target="_blank" rel="noopener noreferrer">Live site ↗</a>
+          <a class="card__link" [href]="links.live" target="_blank" rel="noopener noreferrer">
+            Live site
+            <span class="card__link-arrow" aria-hidden="true">↗</span>
+          </a>
         }
         @if (links.repo) {
-          <a [href]="links.repo" target="_blank" rel="noopener noreferrer">Source ↗</a>
+          <a class="card__link" [href]="links.repo" target="_blank" rel="noopener noreferrer">
+            <svg class="card__link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"
+              />
+            </svg>
+            View source
+            <span class="card__link-arrow" aria-hidden="true">↗</span>
+          </a>
         }
       </div>
     }

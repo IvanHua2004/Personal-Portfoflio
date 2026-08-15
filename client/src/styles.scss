@@ -82,11 +82,15 @@ app-contact {
   border: 0;
 }
 
+// Every gap between headed blocks on the page is the same 6rem, whether the two
+// blocks are separate components (About, Contact) or subsections of one
+// (Currently, Skills). Half of it comes from each side, so two adjacent
+// sections add up to the same distance a single in-component heading uses.
 .section {
-  padding-block: var(--space-9);
+  padding-block: var(--space-7);
 
   @include breakpoint(sm) {
-    padding-block: var(--space-7);
+    padding-block: var(--space-6);
   }
 }
 
@@ -102,6 +106,16 @@ app-contact {
     height: 1px;
     background: var(--color-border);
   }
+}
+
+// Section index, in the same accent mono the project rows number themselves
+// with. Numbering the sections too makes the page read as one system, and tells
+// the reader how much of it is left.
+.section__index {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-accent);
 }
 
 .btn {
@@ -144,6 +158,13 @@ app-contact {
   border-radius: 999px;
   color: var(--color-text);
   font-size: var(--text-sm);
+}
+
+// One per project: the idea the project is about, rather than a tool it used.
+.tag--key {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-hover);
 }
 
 @media (prefers-reduced-motion: reduce) {

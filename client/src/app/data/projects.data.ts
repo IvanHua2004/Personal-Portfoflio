@@ -13,6 +13,7 @@ export const PROJECTS: Project[] = [
       'workspace. The solver is a Jacobian with damped least squares, which stays ' +
       'stable near singularities where a plain inverse blows up.',
     tags: ['ROS 2', 'C++', 'RViz', 'Inverse kinematics', 'Quaternions', 'URDF', 'Eigen'],
+    keyTag: 'Inverse kinematics',
     year: 2026,
     featured: true,
     links: {
@@ -36,7 +37,8 @@ export const PROJECTS: Project[] = [
       'reach them. Three joints keeps the geometry tractable, so it was the right ' +
       'place to get the solver and the ROS 2 node structure right before scaling the ' +
       'same ideas up to six axes.',
-    tags: ['ROS 2', 'turtlesim', 'Inverse kinematics', 'Robotics'],
+    tags: ['ROS 2', 'Python', 'turtlesim', 'Inverse kinematics', 'Robotics'],
+    keyTag: 'Inverse kinematics',
     year: 2026,
     featured: true,
     links: {
@@ -59,6 +61,7 @@ export const PROJECTS: Project[] = [
       'BFS spreads evenly, and A* leans toward the goal its heuristic points at. ' +
       'Building it was how I learned A*.',
     tags: ['Algorithms', 'Pathfinding', 'A*', 'BFS', 'DFS', 'Visualisation', 'PyQt', 'Python'],
+    keyTag: 'Pathfinding',
     year: 2026,
     featured: true,
     links: {
@@ -80,6 +83,7 @@ export const PROJECTS: Project[] = [
       'and styling to the animated particle hero that reacts to the cursor. ' +
       'Designed to work on any screen size and deployed straight from the repo.',
     tags: ['Angular', 'TypeScript', 'Canvas', 'SCSS', 'Express', 'Node.js'],
+    keyTag: 'Canvas',
     year: 2026,
     featured: true,
     links: {

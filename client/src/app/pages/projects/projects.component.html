@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <h2 class="section__title">Projects</h2>
+    <h2 class="section__title"><span class="section__index">01</span> Projects</h2>
     <p class="projects__intro">
       Mostly robotics and the maths underneath it. Each one links to its source.
     </p>
@@ -8,7 +8,7 @@
     <ol class="projects">
       @for (project of projects(); track project.slug) {
         <li>
-          <app-project-card [project]="project" [index]="$index + 1" [flipped]="$odd" />
+          <app-project-card [project]="project" [flipped]="$odd" />
         </li>
       }
     </ol>

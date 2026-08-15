@@ -1,6 +1,3 @@
-// Two columns: the invitation on the left, the links themselves on the right.
-// Rows rather than buttons, because the handles are the content here and a row
-// gives them room to be read.
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

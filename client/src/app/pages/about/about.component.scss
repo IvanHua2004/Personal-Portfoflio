@@ -3,8 +3,17 @@
   font-size: var(--text-lg);
 }
 
+// Matches the distance between two whole sections (each contributes half of it
+// through .section's padding), so Currently and Skills sit on the same rhythm
+// as About and Contact.
 .about__heading {
-  margin-top: var(--space-8);
+  margin-top: var(--space-9);
+}
+
+@media (max-width: 640px) {
+  .about__heading {
+    margin-top: var(--space-8);
+  }
 }
 
 // The date sits directly beside the heading, before the rule, so it reads as
