@@ -8,11 +8,11 @@ export const PROFILE = {
   location: 'Polytechnique Montréal',
   email: 'ivanhua631@gmail.com',
   bio: [
-    'I am a front-end developer who enjoys the part of the job where a rough idea ' +
-      'turns into something people can actually click. Most of my work sits in the ' +
-      'Angular and TypeScript world, with a strong bias toward performance and accessibility.',
-    'Outside of client work I maintain a handful of small open-source utilities and ' +
-      'write occasionally about front-end architecture.',
+    'I am a computer engineering student who likes learning about AI. Most of what ' +
+      'I build starts as something I wanted to understand, whether that is inverse ' +
+      'kinematics on a robotic arm or how a search algorithm actually explores a grid.',
+    'Lately I have started reading research papers, both to keep up with where AI ' +
+      'is going and to find ideas worth building into my next project.',
   ],
   socials: [
     { label: 'GitHub', url: 'https://github.com/IvanHua2004' },
