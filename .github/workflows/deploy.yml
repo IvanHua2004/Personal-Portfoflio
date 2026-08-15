@@ -43,7 +43,11 @@ jobs:
           npx ng build --base-href "/${GITHUB_REPOSITORY#*/}/"
           node scripts/postbuild-gh-pages.mjs
 
+      # enablement lets the first run create the Pages site itself, instead of
+      # failing with a 404 until someone flips the switch in repo settings.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
