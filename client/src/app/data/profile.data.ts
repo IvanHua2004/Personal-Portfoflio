@@ -2,9 +2,12 @@ import { SkillGroup } from '../core/models/skill.model';
 
 export const PROFILE = {
   name: 'Ivan Hua',
+  // The hero greets people by first name; the full name is still used for the
+  // header wordmark, the footer and the page title.
+  firstName: 'Ivan',
   role: 'Computer engineering student',
   tagline:
-    'Mathematics is what pulled me into engineering. AI is where I want to go deeper.',
+    'Mathematics is what pulled me into engineering. AI is where I want to go deeper',
   location: 'Polytechnique Montréal',
   email: 'ivanhua631@gmail.com',
   bio: [
