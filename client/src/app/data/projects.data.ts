@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
       'controls in the XY, ZX and YZ planes so it can be moved anywhere in the ' +
       'workspace. The solver is a Jacobian with damped least squares, which stays ' +
       'stable near singularities where a plain inverse blows up.',
-    tags: ['ROS 2', 'C++', 'Eigen', 'RViz', 'Inverse kinematics', 'Quaternions', 'URDF'],
+    tags: ['ROS 2', 'C++', 'RViz', 'Inverse kinematics', 'Quaternions', 'URDF'],
     year: 2026,
     featured: true,
     links: {
@@ -54,10 +54,11 @@ export const PROJECTS: Project[] = [
     title: 'Graph search visualiser',
     summary: 'DFS, BFS and A* explored side by side on a grid you draw walls into.',
     description:
-      'Watching the frontier expand makes the difference obvious in a way pseudocode ' +
-      'never is: DFS commits down one path, BFS spreads evenly, and A* leans toward ' +
-      'the goal its heuristic points at.',
-    tags: ['Algorithms', 'Pathfinding', 'A*', 'BFS', 'DFS', 'Visualisation'],
+      'I wanted to understand these algorithms visually, not just as code. Watching ' +
+      'the frontier expand makes the difference clear: DFS commits down one path, ' +
+      'BFS spreads evenly, and A* leans toward the goal its heuristic points at. ' +
+      'Building it was how I learned A*.',
+    tags: ['Algorithms', 'Pathfinding', 'A*', 'BFS', 'DFS', 'Visualisation', 'PyQt', 'Python'],
     year: 2026,
     featured: true,
     links: {
@@ -75,9 +76,9 @@ export const PROJECTS: Project[] = [
     title: 'This site',
     summary: 'An Angular portfolio whose hero is built from a few thousand particles.',
     description:
-      'Angular 20 and signals on a hand-written SCSS system, no UI library. The hero ' +
-      'measures its own headings out of the DOM, so it tracks the real layout at any ' +
-      'size, and the real text stays in the page for screen readers.',
+      'A single-page portfolio built with Angular and TypeScript, from the layout ' +
+      'and styling to the animated particle hero that reacts to the cursor. ' +
+      'Designed to work on any screen size and deployed straight from the repo.',
     tags: ['Angular', 'TypeScript', 'Canvas', 'SCSS', 'Express', 'Node.js'],
     year: 2026,
     featured: true,
