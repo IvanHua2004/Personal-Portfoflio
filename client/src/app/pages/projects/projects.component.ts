@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { ProjectCardComponent } from '../../shared/components/project-card/project-card.component';
 import { ProjectService } from '../../core/services/project.service';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 /**
  * The tag filter is gone. Four projects produced ten filter pills — more
@@ -10,7 +11,7 @@ import { ProjectService } from '../../core/services/project.service';
  */
 @Component({
   selector: 'app-projects',
-  imports: [ProjectCardComponent],
+  imports: [ProjectCardComponent, RevealDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

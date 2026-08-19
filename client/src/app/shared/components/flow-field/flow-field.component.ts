@@ -78,7 +78,7 @@ export class FlowFieldComponent {
   /** Ceiling on particle count, including the extras the text needs. Coverage
    * is what makes letters readable, so this needs to reach the glyph sample
    * count. Lower it on low-powered devices. */
-  readonly maxParticles = input(3600);
+  readonly maxParticles = input(5400);
   /** Travel speed in px per frame, before the depth multiplier. */
   readonly speed = input(1.8);
   /** How tightly currents curl. Larger = more turbulent. */
@@ -109,16 +109,16 @@ export class FlowFieldComponent {
    * Must exceed assembleMs plus catSettleMs plus the cat's fade, or the text
    * releases while the big cat is still on screen and the two read as one
    * event. At the defaults the cat is gone a beat before the text lets go. */
-  readonly autoRevealMs = input(6000);
+  readonly autoRevealMs = input(8200);
   /** Duration of the landing pop, in ms. */
   readonly popMs = input(520);
   /** Size of the landing pop, as a fraction. 0 disables it. */
   readonly popAmount = input(0.07);
 
   /** Opacity of a fully assembled letter, before the depth blend fades out. */
-  readonly textAlpha = input(0.85);
+  readonly textAlpha = input(0.95);
   /** Stroke width of a fully assembled letter, in px. */
-  readonly textWidth = input(1.1);
+  readonly textWidth = input(1.35);
   /** How much of the reveal is spread out in time, 0–0.9. */
   readonly writeStagger = input(0.75);
   /** 'reading' writes top line to bottom, left to right within each line.
@@ -149,7 +149,7 @@ export class FlowFieldComponent {
   readonly catColor = input<string | null>(null);
   /** How long the big cat holds its seat before it strikes, in ms. The hold is
    * motionless, and motionless time reads long — 3s felt closer to 5. */
-  readonly catSettleMs = input(1800);
+  readonly catSettleMs = input(3400);
   /** Duration of the swipe that shatters the text, in ms. */
   readonly catSwipeMs = input(620);
   /** How long the claw marks linger after impact, in ms. */
@@ -787,9 +787,7 @@ export class FlowFieldComponent {
     // otherwise free flow turns into soup.
     const needed = this.glyphPoints.length / 2;
     this.count =
-      needed > 0
-        ? Math.max(this.flowCount, Math.min(ceiling, Math.round(needed * 0.95)))
-        : this.flowCount;
+      needed > 0 ? Math.max(this.flowCount, Math.min(ceiling, needed)) : this.flowCount;
 
     // The cat gets its own block at the end, on top of the ceiling — borrowing
     // from the text budget would thin the letters to pay for it.
@@ -923,8 +921,8 @@ export class FlowFieldComponent {
     // Small personal orbit, used while holding a letter. Kept close to a pixel
     // so it reads as motion without thickening the strokes of small type.
     this.orbitPhase[i] = Math.random() * Math.PI * 2;
-    this.orbitSpeed[i] = (0.07 + Math.random() * 0.09) * (Math.random() < 0.5 ? -1 : 1);
-    this.orbitRadius[i] = 0.35 + Math.random() * 0.8;
+    this.orbitSpeed[i] = (0.04 + Math.random() * 0.05) * (Math.random() < 0.5 ? -1 : 1);
+    this.orbitRadius[i] = 0.18 + Math.random() * 0.34;
 
     this.band[i] = Math.min(
       FlowFieldComponent.BANDS - 1,

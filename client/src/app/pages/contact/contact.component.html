@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container contact">
-    <div class="contact__lead">
+    <div class="contact__lead" appReveal>
       <h2 class="section__title"><span class="section__index">05</span> Contact</h2>
       <p class="contact__intro">
         The quickest way to reach me is any of these. I answer email fastest.
@@ -9,7 +9,7 @@
 
     <ul class="socials">
       @for (social of profile.socials; track social.url) {
-        <li>
+        <li appReveal [appRevealDelay]="$index * 80">
           <a
             class="socials__link"
             [href]="social.url"

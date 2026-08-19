@@ -1,13 +1,13 @@
 <section class="section">
   <div class="container">
-    <h2 class="section__title"><span class="section__index">01</span> Projects</h2>
-    <p class="projects__intro">
+    <h2 class="section__title" appReveal><span class="section__index">01</span> Projects</h2>
+    <p class="projects__intro" appReveal [appRevealDelay]="80">
       Mostly robotics and the maths underneath it. Each one links to its source.
     </p>
 
     <ol class="projects">
       @for (project of projects(); track project.slug) {
-        <li>
+        <li appReveal>
           <app-project-card [project]="project" [flipped]="$odd" />
         </li>
       }

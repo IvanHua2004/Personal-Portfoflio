@@ -162,7 +162,7 @@ export function sampleText(
   // produced 6,600 points where per-line strides produce ~3,200 with every
   // line just as readable.
   for (const line of lines) {
-    const stride = Math.max(2, Math.min(4, Math.round(line.fontPx / 14)));
+    const stride = Math.max(2, Math.min(3, Math.round(line.fontPx / 18)));
     const yStart = Math.max(0, Math.floor(line.top) - 4);
     const yEnd = Math.min(height - 1, Math.ceil(line.bottom) + 4);
 

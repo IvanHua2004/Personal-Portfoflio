@@ -1,29 +1,31 @@
 <section class="section">
   <div class="container about">
-    <h2 class="section__title"><span class="section__index">02</span> About</h2>
+    <h2 class="section__title" appReveal><span class="section__index">02</span> About</h2>
 
     @for (paragraph of profile.bio; track $index) {
-      <p class="about__bio">{{ paragraph }}</p>
+      <p class="about__bio" appReveal [appRevealDelay]="$index * 80">{{ paragraph }}</p>
     }
 
-    <h2 class="section__title about__heading">
+    <h2 class="section__title about__heading" appReveal>
       <span class="section__index">03</span> Currently
       <span class="current__updated">{{ current.updated }}</span>
     </h2>
 
     <dl class="current">
       @for (item of current.items; track item.label) {
-        <div class="current__row">
+        <div class="current__row" appReveal [appRevealDelay]="$index * 80">
           <dt class="current__label">{{ item.label }}</dt>
           <dd class="current__text">{{ item.text }}</dd>
         </div>
       }
     </dl>
 
-    <h2 class="section__title about__heading"><span class="section__index">04</span> Skills</h2>
+    <h2 class="section__title about__heading" appReveal>
+      <span class="section__index">04</span> Skills
+    </h2>
     <dl class="skills">
       @for (group of skills; track group.category) {
-        <div class="current__row">
+        <div class="current__row" appReveal [appRevealDelay]="$index * 80">
           <dt class="current__label">{{ group.category }}</dt>
           <dd class="skills__items">
             <ul class="about__skills-list">
