@@ -47,53 +47,67 @@ export class HeaderComponent {
 
   /**
    * Scroll-spy. `routerLinkActive` only knows about the URL, and on a one-page
-   * site the URL barely changes — so the highlight has to come from what's
-   * actually on screen instead.
+   * site the URL barely changes, so the highlight comes from what's on screen.
+   *
+   * The header renders before the router has put the sections in the DOM, so
+   * this retries until it finds them rather than giving up on the first look.
    */
-  private watchSections(): void {
+  private watchSections(attempt = 0): void {
     const sections = this.navItems
       .map((item) => document.getElementById(item.fragment))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (sections.length === 0) {
+    if (sections.length < this.navItems.length) {
+      if (attempt < 60) {
+        requestAnimationFrame(() => this.watchSections(attempt + 1));
+      }
       return;
     }
 
     this.zone.runOutsideAngular(() => {
-      const visible = new Map<string, number>();
+      let queued = false;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            visible.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+      // Whichever section has crossed under the header most recently wins.
+      // Comparing intersection ratios instead breaks here, because a 3000px
+      // Projects section can never show as much of itself as a short Contact.
+      const pick = () => {
+        queued = false;
+        const line = 96;
+        let best = sections[0].id;
+
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= line) {
+            best = section.id;
           }
+        }
 
-          // Whichever section shows the most wins. Comparing ratios rather than
-          // taking the first intersecting one stops the highlight flickering
-          // between two sections while a boundary crosses the viewport.
-          let best = '';
-          let bestRatio = 0;
-          for (const [id, ratio] of visible) {
-            if (ratio > bestRatio) {
-              bestRatio = ratio;
-              best = id;
-            }
-          }
+        // Bottom of the page: the last section may be too short to reach the
+        // line, and nothing below it can ever take over.
+        const doc = document.documentElement;
+        if (doc.scrollTop + doc.clientHeight >= doc.scrollHeight - 2) {
+          best = sections[sections.length - 1].id;
+        }
 
-          if (best && best !== this.activeSection()) {
-            this.zone.run(() => this.activeSection.set(best));
-          }
-        },
-        // Several thresholds so the ratio updates smoothly as you scroll,
-        // rather than only at the moment a section enters or leaves.
-        { threshold: [0, 0.15, 0.3, 0.5, 0.75, 1] },
-      );
+        if (best !== this.activeSection()) {
+          this.zone.run(() => this.activeSection.set(best));
+        }
+      };
 
-      for (const section of sections) {
-        observer.observe(section);
-      }
+      const onScroll = () => {
+        if (!queued) {
+          queued = true;
+          requestAnimationFrame(pick);
+        }
+      };
 
-      this.destroyRef.onDestroy(() => observer.disconnect());
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll, { passive: true });
+      pick();
+
+      this.destroyRef.onDestroy(() => {
+        removeEventListener('scroll', onScroll);
+        removeEventListener('resize', onScroll);
+      });
     });
   }
 

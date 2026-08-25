@@ -1,10 +1,23 @@
-.header {
+// Sticky has to sit on the host: a sticky child can only travel inside its
+// containing block, and <app-header> is only as tall as the bar itself.
+:host {
   position: sticky;
   top: 0;
   z-index: 50;
+  display: block;
+}
+
+// Solid surface, not a translucent wash of the page colour. Dark-on-dark at
+// 85% let content ghost through the blur, which is what read as broken.
+.header {
+  position: relative;
   border-bottom: 1px solid var(--color-border);
-  background: rgba(13, 17, 23, 0.85);
-  backdrop-filter: blur(10px);
+  background: var(--color-surface);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
+}
+
+.header__nav {
+  position: relative;
 }
 
 .header__inner {
@@ -22,32 +35,31 @@
   letter-spacing: -0.02em;
 }
 
-.header__dot {
-  color: var(--color-accent);
-}
-
 .header__list {
   display: flex;
-  gap: var(--space-5);
+  gap: var(--space-1);
   margin: 0;
   padding: 0;
   list-style: none;
 
   a {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    border-radius: 999px;
     color: var(--color-text-muted);
     font-size: var(--text-sm);
     font-weight: 500;
+    transition:
+      background-color var(--transition),
+      color var(--transition);
 
-    &:hover,
-    &.is-active {
+    &:hover {
       color: var(--color-text);
     }
 
     &.is-active {
-      text-decoration: underline;
-      text-underline-offset: 6px;
-      text-decoration-color: var(--color-accent);
-      text-decoration-thickness: 2px;
+      background: var(--color-accent-soft);
+      color: var(--color-accent-hover);
     }
   }
 }
@@ -81,6 +93,7 @@
     padding: var(--space-4) var(--space-5);
     border-bottom: 1px solid var(--color-border);
     background: var(--color-surface);
+    box-shadow: var(--shadow-md);
 
     &.is-open { display: block; }
   }
