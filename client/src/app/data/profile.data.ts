@@ -41,6 +41,7 @@ export const PROFILE = {
 
 export const SKILLS: SkillGroup[] = [
   { category: 'Robotics', items: ['ROS 2', 'RViz', 'URDF', 'Inverse kinematics', 'Eigen'] },
+  { category: 'Machine learning', items: ['PyTorch', 'CNNs', 'NumPy'] },
   { category: 'Languages', items: ['C++', 'TypeScript', 'JavaScript', 'Python'] },
   { category: 'Web', items: ['Angular', 'RxJS', 'Node.js', 'Express', 'Canvas'] },
   { category: 'Tooling', items: ['Git', 'CMake', 'colcon', 'GitHub Actions'] },

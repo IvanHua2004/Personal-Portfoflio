@@ -75,6 +75,27 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    slug: 'digit-guesser',
+    title: 'Digit guesser',
+    summary:
+      'A CNN trained on MNIST, with a drawing pad that predicts live as you write.',
+    description:
+      'I read the research paper Attention Is All You Need and wanted to understand ' +
+      'CNNs better, so I built this to learn how they work.',
+    tags: ['Python', 'PyTorch', 'CNN', 'MNIST', 'Computer vision'],
+    keyTag: 'CNN',
+    year: 2026,
+    featured: true,
+    links: {
+      repo: 'https://github.com/IvanHua2004/digit-guesser',
+    },
+    media: {
+      src: 'projects/digit-guesser.mp4',
+      type: 'video',
+      alt: 'A digit drawn on the pad, with the prediction updating as it is written',
+    },
+  },
+  {
     slug: 'personal-portfolio',
     title: 'This site',
     summary: 'An Angular portfolio whose hero is built from a few thousand particles.',
