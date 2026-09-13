@@ -80,8 +80,9 @@ export const PROJECTS: Project[] = [
     summary:
       'A CNN trained on MNIST, with a drawing pad that predicts live as you write.',
     description:
-      'I read the research paper Attention Is All You Need and wanted to understand ' +
-      'CNNs better, so I built this to learn how they work.',
+      'I read the research paper Gradient-Based Learning Applied to Document ' +
+      'Recognition, the one MNIST comes from, and wanted to understand CNNs ' +
+      'better, so I built this to learn how they work.',
     tags: ['Python', 'PyTorch', 'CNN', 'MNIST', 'Computer vision'],
     keyTag: 'CNN',
     year: 2026,
