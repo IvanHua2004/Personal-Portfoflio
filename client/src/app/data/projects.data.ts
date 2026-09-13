@@ -82,7 +82,8 @@ export const PROJECTS: Project[] = [
     description:
       'I read the research paper Gradient-Based Learning Applied to Document ' +
       'Recognition, the one MNIST comes from, and wanted to understand CNNs ' +
-      'better, so I built this to learn how they work.',
+      'better, so I built this to learn how they work. It trains 421,642 ' +
+      'parameters from scratch on 60,000 handwritten digits per epoch.',
     tags: ['Python', 'PyTorch', 'CNN', 'MNIST', 'Computer vision'],
     keyTag: 'CNN',
     year: 2026,

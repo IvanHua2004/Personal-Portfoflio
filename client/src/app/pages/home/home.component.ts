@@ -39,12 +39,6 @@ export class HomeComponent {
     this.heroLines().map((ref) => ref.nativeElement),
   );
 
-  /**
-   * The headings stay in the DOM for screen readers, search engines and text
-   * selection — they are only made transparent, and only once the canvas has
-   * confirmed it is running. If the canvas fails, or JavaScript is off, or the
-   * visitor prefers reduced motion, the original text is simply still there.
-   */
   protected readonly fieldReady = signal(false);
 
   protected onFieldReady(): void {
