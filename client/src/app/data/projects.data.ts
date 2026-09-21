@@ -119,6 +119,11 @@ export const PROJECTS: Project[] = [
     featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/LeetCodePractice',
+      extra: {
+        label: 'My LeetCode',
+        url: 'https://leetcode.com/u/ivanhua631/',
+        icon: 'leetcode',
+      },
     },
     media: {
       src: 'projects/leetcode-helper.mp4',

@@ -68,6 +68,19 @@
             <span class="card__link-arrow" aria-hidden="true">↗</span>
           </a>
         }
+        @if (links.extra; as extra) {
+          <a class="card__link" [href]="extra.url" target="_blank" rel="noopener noreferrer">
+            @if (extra.icon === 'leetcode') {
+              <svg class="card__link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M13.48 0a1.37 1.37 0 0 0-.96.44L7.12 6.23 3.26 10.35a5.27 5.27 0 0 0-1.21 2.1 5.35 5.35 0 0 0-.12.52 5.53 5.53 0 0 0 .06 2.36 5.83 5.83 0 0 0 .35 1.02 5.94 5.94 0 0 0 1.27 1.82l4.28 4.19.04.04c2.25 2.16 5.85 2.13 8.06-.08l2.4-2.39a1.38 1.38 0 0 0-1.95-1.96l-2.4 2.4a3.02 3.02 0 0 1-4.2.03l-.02-.02-4.28-4.19c-.65-.64-.97-1.47-.95-2.26a2.68 2.68 0 0 1 .07-.53 2.55 2.55 0 0 1 .62-1.16l3.83-4.13c1.06-1.13 3.2-1.27 4.43-.28l3.5 2.84c.6.48 1.47.39 1.94-.21a1.38 1.38 0 0 0-.2-1.94l-3.5-2.83a6.5 6.5 0 0 0-2.78-1.2l2.02-2.16A1.38 1.38 0 0 0 13.48 0ZM10.62 12.82a1.38 1.38 0 0 0 0 2.76h10.17a1.38 1.38 0 0 0 0-2.76Z"
+                />
+              </svg>
+            }
+            {{ extra.label }}
+            <span class="card__link-arrow" aria-hidden="true">↗</span>
+          </a>
+        }
       </div>
     }
   </div>

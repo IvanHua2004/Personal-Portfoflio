@@ -19,6 +19,7 @@ export interface Project {
   links?: {
     live?: string;
     repo?: string;
+    extra?: { label: string; url: string; icon?: 'leetcode' };
   };
   media?: ProjectMedia;
 }
