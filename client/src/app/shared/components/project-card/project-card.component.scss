@@ -3,37 +3,52 @@
 }
 
 .card {
+  --media-height: 19rem;
+
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: var(--space-7);
+  grid-template-columns: auto minmax(20rem, 1fr);
+  gap: var(--space-6);
   align-items: stretch;
   padding: var(--space-8) 0 0;
   border-top: 1px solid var(--color-border);
 }
 
+:host(.is-flipped) .card {
+  grid-template-columns: minmax(20rem, 1fr) auto;
+}
+
 :host(.is-flipped) .card__media {
   order: 2;
+  margin: 0 calc(var(--space-6) * -1) 0 0;
+}
+
+.card__body {
+  padding-left: var(--space-4);
+}
+
+:host(.is-flipped) .card__body {
+  padding-left: 0;
+  padding-right: var(--space-4);
 }
 
 .card__media {
   position: relative;
-  display: flex;
-  margin: 0;
-  padding: var(--space-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  align-self: center;
+  margin: 0 0 0 calc(var(--space-6) * -1);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
   background: var(--color-surface);
-  min-height: 15rem;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+  line-height: 0;
 }
 
 .card__asset {
   display: block;
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  object-fit: cover;
+  height: var(--media-height);
+  width: auto;
+  max-width: 100%;
   border-radius: var(--radius-sm);
-  background: var(--color-bg);
+  object-fit: cover;
 }
 
 :host(.is-text-only) .card {
@@ -143,22 +158,35 @@
 .card__link-arrow {
   opacity: 0.7;
 }
+
 @media (max-width: 900px) {
+  .card__media,
+  :host(.is-flipped) .card__media {
+    margin: 0;
+  }
+
+  .card__body,
+  :host(.is-flipped) .card__body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  :host(.is-flipped) .card {
+    grid-template-columns: 1fr;
+  }
+
   .card {
     grid-template-columns: 1fr;
     gap: var(--space-5);
     padding: var(--space-6) 0 0;
   }
 
-  .card__media {
-    min-height: 0;
+  :host(.is-flipped) .card__media {
+    order: 0;
   }
 
   .card__asset {
-    aspect-ratio: 16 / 10;
-  }
-
-  :host(.is-flipped) .card__media {
-    order: 0;
+    width: 100%;
+    height: auto;
   }
 }

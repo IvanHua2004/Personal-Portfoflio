@@ -49,10 +49,6 @@
 }
 
 
-.skills .current__label {
-  padding-top: 0.35em;
-}
-
 .current__text {
   margin: 0;
   max-width: 58ch;
@@ -64,8 +60,13 @@
   margin: var(--space-4) 0 0;
 
   .current__row {
+    align-items: center;
     padding: var(--space-3) 0;
     border-bottom: 0;
+  }
+
+  .current__label {
+    padding-top: 0;
   }
 }
 

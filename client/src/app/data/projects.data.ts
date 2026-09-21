@@ -22,6 +22,7 @@ export const PROJECTS: Project[] = [
     media: {
       src: 'projects/six-axis.mp4',
       type: 'video',
+      ratio: '966 / 720',
       poster: 'projects/six-axis.jpg',
       alt: 'The claw following a sphere dragged through the RViz scene',
     },
@@ -47,6 +48,7 @@ export const PROJECTS: Project[] = [
     media: {
       src: 'projects/ik-3dof.mp4',
       type: 'video',
+      ratio: '720 / 720',
       poster: 'projects/ik-3dof.jpg',
       alt: 'The turtle claw reaching a target turtle that has just spawned',
     },
@@ -70,6 +72,7 @@ export const PROJECTS: Project[] = [
     media: {
       src: 'projects/graph-search.mp4',
       type: 'video',
+      ratio: '1324 / 720',
       poster: 'projects/graph-search.jpg',
       alt: 'A search expanding across the grid, frontier spreading toward the goal',
     },
@@ -94,7 +97,32 @@ export const PROJECTS: Project[] = [
     media: {
       src: 'projects/digit-guesser.mp4',
       type: 'video',
+      ratio: '922 / 720',
+      poster: 'projects/digit-guesser.jpg',
       alt: 'A digit drawn on the pad, with the prediction updating as it is written',
+    },
+  },
+  {
+    slug: 'leetcode-helper',
+    title: 'LeetCode helper',
+    summary:
+      'A drag-and-drop trainer that has you assemble a solution line by line instead ' +
+      'of typing it.',
+    description:
+      'I am currently training on LeetCode, so I made an app that makes it easier ' +
+      'and more fun. Building the answer from shuffled lines forces you to think ' +
+      'about the shape of the solution rather than the syntax, which is what ' +
+      'builds intuition for the patterns behind each kind of problem.',
+    tags: ['TypeScript', 'Algorithms', 'Problem patterns', 'Python'],
+    keyTag: 'Problem patterns',
+    year: 2026,
+    featured: true,
+    media: {
+      src: 'projects/leetcode-helper.mp4',
+      type: 'video',
+      ratio: '1484 / 720',
+      poster: 'projects/leetcode-helper.jpg',
+      alt: 'Code lines being dragged from a pool into the solution, with a hint and a timer',
     },
   },
   {
@@ -115,6 +143,7 @@ export const PROJECTS: Project[] = [
     media: {
       src: 'projects/portfolio.mp4',
       type: 'video',
+      ratio: '1444 / 720',
       poster: 'projects/portfolio.jpg',
       alt: 'The hero assembling its headings out of particles',
     },

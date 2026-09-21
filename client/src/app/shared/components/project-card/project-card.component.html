@@ -1,10 +1,11 @@
 <article class="card">
   @if (project().media; as media) {
-    <figure class="card__media">
+    <figure class="card__media" [style.max-width]="media.width ?? null">
       @if (media.type === 'video') {
         <video
           #clip
           class="card__asset"
+          [style.aspect-ratio]="media.ratio"
           [src]="media.src"
           [poster]="media.poster ?? ''"
           [attr.aria-label]="media.alt"
@@ -16,6 +17,7 @@
       } @else {
         <img
           class="card__asset"
+          [style.aspect-ratio]="media.ratio"
           [src]="media.src"
           [alt]="media.alt"
           loading="lazy"
