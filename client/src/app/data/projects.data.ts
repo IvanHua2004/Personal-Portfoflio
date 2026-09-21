@@ -117,6 +117,9 @@ export const PROJECTS: Project[] = [
     keyTag: 'Problem patterns',
     year: 2026,
     featured: true,
+    links: {
+      repo: 'https://github.com/IvanHua2004/LeetCodePractice',
+    },
     media: {
       src: 'projects/leetcode-helper.mp4',
       type: 'video',
