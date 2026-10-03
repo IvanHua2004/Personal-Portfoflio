@@ -14,7 +14,6 @@ export class RevealDirective {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
-  /** Delay in ms, for staggering siblings. */
   readonly appRevealDelay = input(0);
 
   constructor() {
@@ -29,7 +28,6 @@ export class RevealDirective {
       return;
     }
 
-    // Hidden from here, not from CSS, so a failed bundle leaves the page readable.
     el.classList.add('reveal');
     el.style.transitionDelay = `${this.appRevealDelay()}ms`;
 

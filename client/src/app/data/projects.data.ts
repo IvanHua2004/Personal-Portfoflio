@@ -15,7 +15,6 @@ export const PROJECTS: Project[] = [
     tags: ['ROS 2', 'C++', 'RViz', 'Inverse kinematics', 'Quaternions', 'URDF', 'Eigen'],
     keyTag: 'Inverse kinematics',
     year: 2026,
-    featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/six-axis-robotic-arm-simulation',
     },
@@ -41,7 +40,6 @@ export const PROJECTS: Project[] = [
     tags: ['ROS 2', 'Python', 'turtlesim', 'Inverse kinematics', 'Robotics'],
     keyTag: 'Inverse kinematics',
     year: 2026,
-    featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/Inverse_kinematic_ROS2_simulation',
     },
@@ -65,7 +63,6 @@ export const PROJECTS: Project[] = [
     tags: ['Algorithms', 'Pathfinding', 'A*', 'BFS', 'DFS', 'Visualisation', 'PyQt', 'Python'],
     keyTag: 'Pathfinding',
     year: 2026,
-    featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/GraphSearchVisualiser',
     },
@@ -90,7 +87,6 @@ export const PROJECTS: Project[] = [
     tags: ['Python', 'PyTorch', 'CNN', 'MNIST', 'Computer vision'],
     keyTag: 'CNN',
     year: 2026,
-    featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/digit-guesser',
     },
@@ -116,7 +112,6 @@ export const PROJECTS: Project[] = [
     tags: ['TypeScript', 'Algorithms', 'Problem patterns', 'Python'],
     keyTag: 'Problem patterns',
     year: 2026,
-    featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/LeetCodePractice',
       extra: {
@@ -144,7 +139,6 @@ export const PROJECTS: Project[] = [
     tags: ['Angular', 'TypeScript', 'Canvas', 'SCSS', 'Express', 'Node.js'],
     keyTag: 'Canvas',
     year: 2026,
-    featured: true,
     links: {
       repo: 'https://github.com/IvanHua2004/Personal-Portfoflio',
     },

@@ -1,13 +1,3 @@
-/**
- * Turns live DOM text into particle targets.
- *
- * Nothing here re-implements the browser's typesetting. Lines are measured off
- * the rendered elements with Range rects, then redrawn to an offscreen canvas
- * and read back as lit pixels — so the particles land on the real layout,
- * wrapping and all, at whatever viewport the visitor happens to have.
- */
-
-/** One visual line of text, measured off the live DOM. */
 export interface TextLine {
   text: string;
   x: number;
@@ -20,19 +10,14 @@ export interface TextLine {
   index: number;
 }
 
-/** Everything the field needs to know about the text it's drawing. */
 export interface SampledText {
-  /** Flat [x, y, x, y, …] of every lit pixel. */
   points: Float32Array;
-  /** Which visual line each point belongs to, parallel to `points`. */
   lineIds: Uint8Array;
   lineCount: number;
-  /** Per-line extents, indexed by line id. */
   minX: Float32Array;
   maxX: Float32Array;
   top: Float32Array;
   bottom: Float32Array;
-  /** Bounding box of the whole block. */
   boxLeft: number;
   boxTop: number;
   boxRight: number;
@@ -41,11 +26,6 @@ export interface SampledText {
   centroidY: number;
 }
 
-/**
- * Walks each element character by character, using Range rects to find where
- * the browser actually broke the lines. That gives the exact substring,
- * position and font of every visual line.
- */
 export function measureTextLines(
   sources: readonly HTMLElement[],
   hostRect: DOMRect,
@@ -64,7 +44,6 @@ export function measureTextLines(
     const fontPx = parseFloat(style.fontSize) || 16;
     const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
 
-    // Group characters by the top of their client rect: same top, same line.
     let current: { top: number; bottom: number; left: number; chars: string[] } | null = null;
 
     const flush = () => {
@@ -96,7 +75,6 @@ export function measureTextLines(
         range.setEnd(node, i + 1);
         const rect = range.getBoundingClientRect();
 
-        // Collapsed rects are whitespace at a line break — nothing to draw.
         if (rect.width === 0 && rect.height === 0) {
           continue;
         }
@@ -116,7 +94,6 @@ export function measureTextLines(
   return lines;
 }
 
-/** Renders the measured lines offscreen and reads back the lit pixels. */
 export function sampleText(
   sources: readonly HTMLElement[],
   hostRect: DOMRect,
@@ -156,11 +133,6 @@ export function sampleText(
   const points: number[] = [];
   const lineIds: number[] = [];
 
-  // Sampling density per line, not globally. Small copy needs roughly a 5x7
-  // grid per character before it reads, but applying that to a 5rem headline
-  // costs thousands of points for no gain — a uniform 2px stride over a hero
-  // produced 6,600 points where per-line strides produce ~3,200 with every
-  // line just as readable.
   for (const line of lines) {
     const stride = Math.max(2, Math.min(3, Math.round(line.fontPx / 18)));
     const yStart = Math.max(0, Math.floor(line.top) - 4);

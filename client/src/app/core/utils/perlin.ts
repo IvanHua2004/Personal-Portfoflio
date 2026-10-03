@@ -1,11 +1,3 @@
-/**
- * Seeded 2D Perlin noise.
- *
- * Perlin returns smooth, continuous values in roughly [-1, 1] — neighbouring
- * coordinates give similar results, which is what makes particles sweep in
- * coherent curves instead of jittering. `Math.random()` per frame would look
- * like static; this looks like wind.
- */
 export class Perlin {
   private readonly perm: Uint8Array = new Uint8Array(512);
 
@@ -15,7 +7,6 @@ export class Perlin {
       table[i] = i;
     }
 
-    // xorshift32 so a given seed always produces the same field.
     let state = Math.floor(seed * 0xffffffff) >>> 0 || 0x9e3779b9;
     const random = (): number => {
       state ^= state << 13;
@@ -38,7 +29,6 @@ export class Perlin {
     }
   }
 
-  /** Quintic curve — smooth first and second derivatives, so no visible banding. */
   private static fade(t: number): number {
     return t * t * t * (t * (t * 6 - 15) + 10);
   }
@@ -60,7 +50,6 @@ export class Perlin {
     }
   }
 
-  /** Sample the field. Returns approximately -1..1. */
   noise2(x: number, y: number): number {
     const xi = Math.floor(x) & 255;
     const yi = Math.floor(y) & 255;

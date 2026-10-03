@@ -13,6 +13,5 @@ import { SeoService } from './core/services/seo.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  // Instantiated so route changes update <meta name="description">.
   private readonly seo = inject(SeoService);
 }

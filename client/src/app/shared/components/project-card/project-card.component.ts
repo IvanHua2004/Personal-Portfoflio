@@ -26,7 +26,6 @@ export class ProjectCardComponent {
   private readonly destroyRef = inject(DestroyRef);
 
   readonly project = input.required<Project>();
-  /** Puts the media on the right instead of the left. */
   readonly flipped = input(false);
 
   private readonly clip = viewChild<ElementRef<HTMLVideoElement>>('clip');

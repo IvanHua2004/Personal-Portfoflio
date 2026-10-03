@@ -13,7 +13,6 @@ import { PROFILE } from '../../../data/profile.data';
 
 interface NavItem {
   label: string;
-  /** Id of the section it scrolls to. */
   fragment: string;
 }
 
@@ -31,7 +30,6 @@ export class HeaderComponent {
   protected readonly profile = PROFILE;
   protected readonly menuOpen = signal(false);
 
-  /** The section currently filling most of the viewport. */
   protected readonly activeSection = signal('top');
 
   protected readonly navItems: NavItem[] = [
@@ -45,13 +43,6 @@ export class HeaderComponent {
     afterNextRender(() => this.watchSections());
   }
 
-  /**
-   * Scroll-spy. `routerLinkActive` only knows about the URL, and on a one-page
-   * site the URL barely changes, so the highlight comes from what's on screen.
-   *
-   * The header renders before the router has put the sections in the DOM, so
-   * this retries until it finds them rather than giving up on the first look.
-   */
   private watchSections(attempt = 0): void {
     const sections = this.navItems
       .map((item) => document.getElementById(item.fragment))
@@ -67,9 +58,6 @@ export class HeaderComponent {
     this.zone.runOutsideAngular(() => {
       let queued = false;
 
-      // Whichever section has crossed under the header most recently wins.
-      // Comparing intersection ratios instead breaks here, because a 3000px
-      // Projects section can never show as much of itself as a short Contact.
       const pick = () => {
         queued = false;
         const line = 96;
@@ -81,8 +69,6 @@ export class HeaderComponent {
           }
         }
 
-        // Bottom of the page: the last section may be too short to reach the
-        // line, and nothing below it can ever take over.
         const doc = document.documentElement;
         if (doc.scrollTop + doc.clientHeight >= doc.scrollHeight - 2) {
           best = sections[sections.length - 1].id;

@@ -36,13 +36,10 @@
   }
 }
 
-// Last row has no divider under it, so the list ends rather than looking cut off.
 .socials li:last-child .socials__link {
   border-bottom: 0;
 }
 
-// currentColor lets the logo follow the row into its hover colour instead of
-// staying a stranded grey beside it.
 .socials__icon {
   flex-shrink: 0;
   width: 20px;
@@ -65,8 +62,6 @@
   color: inherit;
 }
 
-// One column below this: side by side, the intro wraps every few words and the
-// email address starts breaking mid-domain.
 @media (max-width: 800px) {
   .contact {
     grid-template-columns: 1fr;

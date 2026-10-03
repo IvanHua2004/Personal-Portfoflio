@@ -40,6 +40,20 @@
   background: var(--color-surface);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
   line-height: 0;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.card:hover .card__media {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.62);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover .card__media {
+    transform: none;
+  }
 }
 
 .card__asset {
@@ -122,7 +136,7 @@
   border: 1px solid var(--color-accent);
   border-radius: var(--radius-md);
   background: var(--color-accent);
-  color: #08203c;
+  color: #1a1206;
   font-size: var(--text-sm);
   font-weight: 500;
   text-decoration: none;

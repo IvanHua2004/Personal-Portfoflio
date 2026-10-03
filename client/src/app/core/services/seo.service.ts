@@ -3,10 +3,6 @@ import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs';
 
-/**
- * Keeps <meta name="description"> and Open Graph tags in sync with the active
- * route. Titles are handled by the router's built-in `title` property.
- */
 @Injectable({ providedIn: 'root' })
 export class SeoService {
   private readonly router = inject(Router);

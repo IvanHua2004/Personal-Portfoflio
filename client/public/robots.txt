@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ivanhua2004.github.io/Personal-Portfoflio/sitemap.xml

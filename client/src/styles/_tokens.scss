@@ -1,22 +1,17 @@
-// Design tokens — single source of truth for colour, spacing and type.
 :root {
-  // Colour
-  --color-bg: #0d1117;
-  // Same value as --color-bg, as channels, so it can be used with rgba().
-  --color-bg-rgb: 13, 17, 23;
-  --color-surface: #161b22;
-  --color-surface-alt: #1c2430;
-  --color-border: #2a3441;
-  --color-text: #e6edf3;
-  --color-text-muted: #98a5b3;
-  --color-accent: #4f9cf9;
-  --color-accent-hover: #7db4fb;
-  --color-accent-soft: rgba(79, 156, 249, 0.12);
-  // Warm counterpart to the accent blue — roughly its complement, so the cat
-  // reads as a separate creature rather than a piece of the text.
+  --color-bg: #0f0e0c;
+  --color-bg-rgb: 15, 14, 12;
+  --color-surface: #191714;
+  --color-surface-alt: #221f1b;
+  --color-border: #322e28;
+  --color-text: #f2eee7;
+  --color-text-muted: #a69e92;
+  --color-accent: #f2a15c;
+  --color-accent-hover: #f8bb84;
+  --color-accent-soft: rgba(242, 161, 92, 0.12);
   --color-cat: #f2a15c;
+  --color-particle: #ddd5c8;
 
-  // Spacing scale
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -27,23 +22,21 @@
   --space-8: 4rem;
   --space-9: 6rem;
 
-  // Typography
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.65rem;
   --text-3xl: clamp(2.25rem, 5vw, 3.5rem);
 
-  // Shape & motion
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --transition: 180ms ease;
 
-  // Layout
   --container-width: 1080px;
 }

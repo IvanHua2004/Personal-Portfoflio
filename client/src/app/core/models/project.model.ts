@@ -15,7 +15,6 @@ export interface Project {
   tags: string[];
   keyTag?: string;
   year: number;
-  featured: boolean;
   links?: {
     live?: string;
     repo?: string;

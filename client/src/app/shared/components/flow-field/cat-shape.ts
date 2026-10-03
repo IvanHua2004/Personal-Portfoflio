@@ -1,38 +1,16 @@
-/**
- * The cat's silhouette, rasterised once and kept as target offsets.
- *
- * Same trick the text uses: draw it, sample the lit pixels, and from then on
- * it's just a set of points particles can be asked to hold. Offsets are stored
- * as fractions of the cat's own height, so a perch only has to supply a
- * position and a size.
- */
-
 export interface CatShape {
-  /** Offsets from the point between the front paws, as fractions of height. */
   lx: Float32Array;
   ly: Float32Array;
-  /** 0 where the tail joins the body, 1 at the tip. */
   tail: Float32Array;
-  /** Head and ear membership, feathered rather than hard cut. */
   head: Float32Array;
   ear: Float32Array;
   count: number;
-  /** Gap between neighbouring points at full size, in px. */
   spacing: number;
 }
 
-/** Neck pivot in the cat's normalised local space, from the design box. */
 export const HEAD_PIVOT_X = 18 / 104;
 export const HEAD_PIVOT_Y = -56 / 104;
 
-/**
- * Draws the cat into an offscreen canvas at `size` px tall and samples it.
- *
- * Each body part is filled separately and deliberately. In a single path these
- * subpaths wind in opposite directions, and canvas's nonzero fill rule cancels
- * where two opposing windings overlap — which punched a hole straight through
- * the body everywhere the tail crossed it.
- */
 export function buildCatShape(size: number): CatShape | null {
   const scale = size / 104;
   const w = Math.ceil(100 * scale);
@@ -50,7 +28,6 @@ export function buildCatShape(size: number): CatShape | null {
   g.translate(0, 4);
   g.fillStyle = '#fff';
 
-  // Body: haunches flaring at the base, narrowing to the shoulders.
   const body = new Path2D();
   body.moveTo(44, 98);
   body.quadraticCurveTo(36, 62, 56, 50);
@@ -63,9 +40,6 @@ export function buildCatShape(size: number): CatShape | null {
   head.arc(68, 30, 20, 0, Math.PI * 2);
   g.fill(head);
 
-  // Ears. Curved rather than flat triangles: the outer edge sweeps up to the
-  // point and the inner edge falls back to the skull, which is what gives a
-  // cat's ear its hooked look and a clean notch between the two.
   const earLeft = new Path2D();
   earLeft.moveTo(52, 18);
   earLeft.quadraticCurveTo(49, 2, 55, -6);
@@ -95,8 +69,6 @@ export function buildCatShape(size: number): CatShape | null {
   }
 
   const data = g.getImageData(0, 0, w, h).data;
-  // Sampling scales with the cat, so a large one doesn't turn into a
-  // constellation of dots with holes between them.
   const stride = Math.max(2, Math.round(size / 78));
   const xs: number[] = [];
   const ys: number[] = [];
@@ -110,13 +82,9 @@ export function buildCatShape(size: number): CatShape | null {
         xs.push((x - w / 2) / size);
         ys.push((y - h) / size);
 
-        // How far along the tail this point sits. A flat flag made the whole
-        // tail translate as a rigid lump, which tore a seam at the join.
         const along = (w * 0.34 - x) / (w * 0.34);
         tail.push(Math.max(0, Math.min(1, along)));
 
-        // Head and ear membership in the 0–104 design space, feathered:
-        // rotating a hard-edged head tears a visible seam across the neck.
         const dy = y / scale - 4;
         headW.push(Math.max(0, Math.min(1, (58 - dy) / 12)));
         earW.push(Math.max(0, Math.min(1, (17 - dy) / 10)));
@@ -124,9 +92,6 @@ export function buildCatShape(size: number): CatShape | null {
     }
   }
 
-  // Enough points to fill the silhouette at this size. Too few and the
-  // sampling grid shows through as holes, which no amount of stroke width
-  // hides on a large cat.
   const cap = 2600;
   const step = xs.length > cap ? xs.length / cap : 1;
   const count = Math.min(cap, xs.length);

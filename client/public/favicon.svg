@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0d1117"/>
-  <text x="32" y="43" font-family="Inter, system-ui, sans-serif" font-size="30"
-        font-weight="700" fill="#4f9cf9" text-anchor="middle">IH</text>
+  <rect width="64" height="64" rx="14" fill="#0f0e0c"/>
+  <g fill="#f2a15c">
+    <path d="M17 26 L19 11 L28 21 Z"/>
+    <path d="M47 26 L45 11 L36 21 Z"/>
+    <ellipse cx="32" cy="34" rx="17" ry="15"/>
+  </g>
+  <g fill="none" stroke="#0f0e0c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 31 L27 34 L22 37"/>
+    <path d="M42 31 L37 34 L42 37"/>
+  </g>
 </svg>

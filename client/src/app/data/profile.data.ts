@@ -2,8 +2,6 @@ import { SkillGroup } from '../core/models/skill.model';
 
 export const PROFILE = {
   name: 'Ivan Hua',
-  // The hero greets people by first name; the full name is still used for the
-  // header wordmark, the footer and the page title.
   firstName: 'Ivan',
   role: 'Computer engineering student',
   tagline:
